@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduFikr — Ta'lim va fikrlar</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fc;
+      color: #172554;
+    }
+    header {
+      background: #243b80;
+      color: white;
+      padding: 22px 8%;
+    }
+    header h1 { margin: 0; }
+    header p { margin-bottom: 0; }
+    nav {
+      background: white;
+      padding: 15px 8%;
+      box-shadow: 0 2px 8px #0001;
+    }
+    nav a {
+      color: #243b80;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+    }
+    main {
+      max-width: 950px;
+      margin: 30px auto;
+      padding: 0 18px;
+    }
+    .intro, .card {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px #1725540d;
+    }
+    .intro { background: #e3eaff; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .rating { color: #d18a00; font-weight: bold; }
+    label { display: block; margin-top: 14px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+    }
+    button {
+      margin-top: 16px;
+      padding: 12px 18px;
+      background: #243b80;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EduFikr 🎓</h1>
+    <p>Ta'limda o'zaro baho va samimiy fikrlar platformasi</p>
+  </header>
+
+  <nav>
+    <a href="#bosh">Bosh sahifa</a>
+    <a href="#oqituvchilar">O'qituvchilar</a>
+    <a href="#fikr">Fikr qoldirish</a>
+  </nav>
+
+  <main>
+    <section class="intro" id="bosh">
+      <h2>Xush kelibsiz!</h2>
+      <p>Yaxshi ta'lim uchun fikr almashing,
+      bir-biringizni hurmat qiling va rivojlaning.</p>
+    </section>
+
+    <section id="oqituvchilar">
+      <h2>O'qituvchilar haqida</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>O'qituvchi 1</h3>
+          <p>Fan: Matematika</p>
+          <p class="rating">★★★★★ 5.0</p>
+          <p>Dars tushuntirishi va muomalasini baholash.</p>
+        </article>
+        <article class="card">
+          <h3>O'qituvchi 2</h3>
+          <p>Fan: Ingliz tili</p>
+          <p class="rating">★★★★☆ 4.0</p>
+          <p>O'quv jarayoni haqida fikr bildirish.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card" id="fikr">
+      <h2>Fikr qoldirish</h2>
+      <p>Hozircha bu namoyish shakli. Fikrlar serverga saqlanmaydi.</p>
+      <form id="feedbackForm">
+        <label for="teacher">O'qituvchini tanlang</label>
+        <select id="teacher" required>
+          <option value="">Tanlang</option>
+          <option>O'qituvchi 1</option>
+          <option>O'qituvchi 2</option>
+        </select>
+
+        <label for="rating">Baho</label>
+        <select id="rating" required>
+          <option value="">Baho tanlang</option>
+          <option>1 yulduz</option>
+          <option>2 yulduz</option>
+          <option>3 yulduz</option>
+          <option>4 yulduz</option>
+          <option>5 yulduz</option>
+        </select>
+
+        <label for="comment">Fikringiz</label>
+        <textarea id="comment" rows="4" maxlength="500"
+          placeholder="Hurmat bilan fikringizni yozing..."
+          required></textarea>
+
+        <button type="submit">Fikrni ko'rish</button>
+      </form>
+      <p id="result" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <h2>Talabalar haqida fikr</h2>
+      <p>Kelajakda o'qituvchilar uchun ham alohida,
+      maxfiyligi va adolatliligi hisobga olingan baholash
+      bo'limi qo'shiladi.</p>
+    </section>
+  </main>
+
+  <footer>EduFikr © 2026 — Ta'lim uchun, hurmat bilan.</footer>
+
+  <script>
+    document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const teacher = document.getElementById("teacher").value;
+      const rating = document.getElementById("rating").value;
+      const comment = document.getElementById("comment").value;
+      document.getElementById("result").textContent =
+        "Namoyish: " + teacher + " | " + rating +
+        " | " + comment;
+    });
+  </script>
+</body>
+</html>
